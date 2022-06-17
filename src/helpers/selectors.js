@@ -11,3 +11,18 @@ export function getAppointmentsForDay(state, day) {
   }
   return appointmentArray;
 }
+
+export function getInterview(state, interview) {
+  let interviewObject = null;
+
+  if(interview){
+    if(state.interviewers[interview.interviewer].id === interview.interviewer){
+      interviewObject = {
+        ...interview,
+        interviewer: state.interviewers[interview.interviewer]
+      };
+    }
+  }
+
+  return interviewObject;
+}
