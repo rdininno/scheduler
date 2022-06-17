@@ -26,3 +26,18 @@ export function getInterview(state, interview) {
 
   return interviewObject;
 }
+
+export function getInterviewersForDay(state, day) {
+  let interviewerArray = [];
+
+  for (let weekday of state.days) {
+    if (weekday.name === day)
+      for (let interviewerId of weekday.interviewers) {
+        if(interviewerId === state.interviewers[interviewerId].id){
+          interviewerArray.push(state.interviewers[interviewerId]);
+        }
+
+      }
+  }
+  return interviewerArray;
+}
