@@ -11,11 +11,14 @@ import {
 import useApplicationData from "hooks/useApplicationData";
 
 export default function Application(props) {
+  //set state
   const { state, setDay, bookInterview, cancelInterview } =
     useApplicationData();
 
+  //create interviewers array
   let interviewersArray = getInterviewersForDay(state, state.day);
 
+  //create daily appointment components
   const dailyAppointments = getAppointmentsForDay(state, state.day).map(
     (appointment) => {
       return (

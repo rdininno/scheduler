@@ -8,6 +8,7 @@ import useVisualMode from "hooks/useVisualMode";
 import Status from "./Status";
 import Confirm from "./Confirm";
 
+//constants
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
 const CREATE = "CREATE";
@@ -19,10 +20,12 @@ const ERROR_SAVE = "ERROR_SAVE";
 const ERROR_DELETE = "ERROR_DELETE";
 
 export default function Appointment(props) {
+  //import hook
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
+  //when save clicked
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -37,10 +40,12 @@ export default function Appointment(props) {
       .catch(() => transition(ERROR_SAVE, true));
   }
 
+  //when delete is clicked
   function confirmDelete() {
     transition(CONFIRM);
   }
 
+  //delete
   function deleteInterview() {
     transition(DELETING, true);
 
@@ -49,6 +54,7 @@ export default function Appointment(props) {
       .catch(() => transition(ERROR_DELETE, true));
   }
 
+  //return - show component based on useVisualMode hook
   return (
     <article className="appointment">
       <Header time={props.time} />
