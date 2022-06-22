@@ -25,3 +25,11 @@ npm test
 ```sh
 npm run storybook
 ```
+
+## Screenshots
+
+!['appointment home'](https://github.com/rdininno/scheduler/blob/main/docs/appointment_home_page.png)
+!['appointment hover'](https://github.com/rdininno/scheduler/blob/main/docs/appointment_hover.png)
+!['add new appointment'](https://github.com/rdininno/scheduler/blob/main/docs/add_new_appointment.png)
+!['appointment added'](https://github.com/rdininno/scheduler/blob/main/docs/appointment_added.png)
+!['appointment delete confirm'](https://github.com/rdininno/scheduler/blob/main/docs/appointment_delete_confirmation.png)
