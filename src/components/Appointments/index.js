@@ -7,6 +7,7 @@ import Form from "./Form";
 import useVisualMode from "hooks/useVisualMode";
 import Status from "./Status";
 import Confirm from "./Confirm";
+import Error from "./Error";
 
 //constants
 const EMPTY = "EMPTY";
@@ -37,7 +38,7 @@ export default function Appointment(props) {
     props
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
-      .catch(() => transition(ERROR_SAVE, true));
+      .catch(error => transition(ERROR_SAVE, true));
   }
 
   //when delete is clicked
@@ -51,7 +52,7 @@ export default function Appointment(props) {
 
     props.cancelInterview(props.id)
       .then(() => transition(EMPTY))
-      .catch(() => transition(ERROR_DELETE, true));
+      .catch(error => transition(ERROR_DELETE, true));
   }
 
   //return - show component based on useVisualMode hook
@@ -103,6 +104,8 @@ export default function Appointment(props) {
           onCancel={back}
         />
       )}
+      {mode === ERROR_DELETE && <Error message={"Error occured while deleting"} onClose={back}/>}
+      {mode === ERROR_SAVE && <Error message={"Error occured while saving"} onClose={back}/>}
     </article>
   );
 }
