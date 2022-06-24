@@ -9,6 +9,21 @@ export default function useApplicationData(initial) {
     interviewers: {},
   });
 
+  useEffect(() => {
+    Promise.all([
+      axios.get("/api/days"), //days - id, name of day, appointments array, interviewers array
+      axios.get("/api/appointments"), //appointments id, time, interview object with interviewer id and student name
+      axios.get("/api/interviewers"), // interviewers id, name, avatar
+    ]).then((all) => {
+      setState((prev) => ({
+        ...prev,
+        days: all[0].data,
+        appointments: all[1].data,
+        interviewers: all[2].data,
+      }));
+    });
+  }, []);
+
   const setDay = (day) => setState({ ...state, day });
 
   function updateSpots(isBooking, isEditting) {
@@ -58,20 +73,7 @@ export default function useApplicationData(initial) {
     });
   }
 
-  useEffect(() => {
-    Promise.all([
-      axios.get("/api/days"), //days - id, name of day, appointments array, interviewers array
-      axios.get("/api/appointments"), //appointments id, time, interview object with interviewer id and student name
-      axios.get("/api/interviewers"), // interviewers id, name, avatar
-    ]).then((all) => {
-      setState((prev) => ({
-        ...prev,
-        days: all[0].data,
-        appointments: all[1].data,
-        interviewers: all[2].data,
-      }));
-    });
-  }, []);
+  
 
   const dataObject = {
     state,
