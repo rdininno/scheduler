@@ -26,6 +26,13 @@ connect to postgreSQL data base with psql -U development. username: development,
 npm start
 ```
 on your server
+
+## Setting up the Scheduler-API
+
+fork and clone this repository: https://github.com/lighthouse-labs/scheduler-api
+install all dependencies
+follow readme instructions to set up the scheduler-api
+this will be required to seed data for Scheduler app
 ## Running Jest Test Framework
 
 ```sh
