@@ -104,8 +104,24 @@ export default function Appointment(props) {
           onCancel={back}
         />
       )}
-      {mode === ERROR_DELETE && <Error message={"Error occured while deleting"} onClose={back}/>}
-      {mode === ERROR_SAVE && <Error message={"Error occured while saving"} onClose={back}/>}
+      {mode === ERROR_DELETE && (
+        <Error 
+          message={"Error occured while deleting"} 
+          onClose={back}
+        />
+      )}
+      {mode === ERROR_SAVE && (
+        <Error 
+          message={"Error occured while saving"} 
+          onClose={() => {
+            if(props.interview === null){
+              transition(CREATE)
+            } else {
+              transition(EDIT)
+            }
+          }}
+        />
+      )}
     </article>
   );
 }
